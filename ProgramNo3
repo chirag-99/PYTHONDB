@@ -1,0 +1,24 @@
+import mysql.connector
+
+con= mysql.connector.connect(host='bjs6w1cdsmgfugppkd7p-mysql.services.clever-cloud.com',user='uoqa7synn1eyoh71',password='If21nm5Ud4NPiMeMW0QT',database='bjs6w1cdsmgfugppkd7p')
+
+curs= con.cursor()
+
+Name= input("Hello User! Please enter your Good Name:")
+print("Welcome %s to my database" %Name)
+
+bookcode= int(input("Enter the bookcode here:"))
+bookname= input("Enter the bookname here:")
+category= input("Enter the category of book here:")
+authorname= input("Enter the author's name here:")
+publication= int(input("Enter the publication year here:"))
+edition= int(input("Enter the edition here:"))
+price= int(input("Enter the price of book here:"))
+
+curs.execute("insert into books values('%d','%s','%s','%s','%d','%d','%d')" %(bookcode,bookname.upper(), category.upper(), authorname.upper(), publication, edition, price))
+
+con.commit()
+
+con.close()
+
+print("New book data successfully inserted into books database")

@@ -1,0 +1,23 @@
+import mysql.connector
+
+con= mysql.connector.connect(host='bjs6w1cdsmgfugppkd7p-mysql.services.clever-cloud.com',user='uoqa7synn1eyoh71',password='If21nm5Ud4NPiMeMW0QT',database='bjs6w1cdsmgfugppkd7p')
+
+curs= con.cursor()
+
+Name= input("Hello User! Please enter your Good Name:")
+print("Welcome %s to my database" %Name)
+
+authorname= input("Enter the author's name here:")
+publication= int(input("Enter the publication year here:"))
+
+curs.execute("select bookname from books where authorname='%s' and publication=%d" %(authorname.upper(),publication))
+
+data=curs.fetchall()
+
+if data==[]:
+    print("Sorry! book not found. Please re-enter")
+else:
+    print(data)
+
+con.close()
+
